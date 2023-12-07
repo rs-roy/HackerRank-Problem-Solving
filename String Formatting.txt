@@ -1,0 +1,10 @@
+def print_formatted(number):
+    for i in range(1, number+1):
+        width = len(bin(number)[2:])
+        #print(width)
+        #need to convert to string for space padding with rjust and to upper case in hex format
+        print(f"{str(i).rjust(width)} {str(oct(i)[2:]).rjust(width)} {str(hex(i)[2:]).upper().rjust(width)} {str(bin(i)[2:]).rjust(width)}")        
+
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
