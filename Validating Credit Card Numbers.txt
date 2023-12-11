@@ -1,0 +1,31 @@
+'''
+► It must start with a ,  or .
+► It must contain exactly  digits.
+► It must only consist of digits (-).
+► It may have digits in groups of , separated by one hyphen "-".
+► It must NOT use any other separator like ' ' , '_', etc.
+► It must NOT have  or more consecutive repeated digits.
+'''
+
+import re 
+
+totalCards = int(input())
+
+for i in range(totalCards):
+    card = input()
+
+    result = re.search(r'^[456]\d{3}\-{0,1}\d{4}\-{0,1}\d{4}\-{0,1}\d{4}$',card)
+
+    if result is not None:
+        # To check repeating digit by 4 times ignoring -
+        cardFiltered = card.replace("-","")
+        print(cardFiltered)
+        for i in range(len(cardFiltered[:-3])):
+            if cardFiltered[i] == cardFiltered[i+1] == cardFiltered[i+2] == cardFiltered[i+3]:
+               repeat = True
+               break
+            else:
+                repeat = False
+        print("Valid") if repeat == False else print("Invalid")
+    else:
+        print("Invalid")
